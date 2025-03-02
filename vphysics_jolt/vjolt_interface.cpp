@@ -194,8 +194,10 @@ void JoltPhysicsInterface::OnTrace( const char *fmt, ... )
 
 bool JoltPhysicsInterface::OnAssert( const char *inExpression, const char *inMessage, const char *inFile, uint inLine )
 {
-	const char *message = inMessage ? inMessage : inExpression;
-	(void) message;
-	AssertMsg_Internal( false, inLine, inFile, message );
+	AssertMsg_Internal( false, "[jolt] Assert failed: %s:%u %s %s\n",
+		inFile ? inFile : "", inLine,
+		inExpression ? inExpression : "",
+		inMessage ? inMessage : ""
+	);
 	return false;
 }

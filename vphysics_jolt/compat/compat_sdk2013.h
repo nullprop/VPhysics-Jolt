@@ -32,7 +32,7 @@ static const int MAX_LOGGING_MESSAGE_LENGTH = 2048;
 // TODO
 #define DevAssert( ... )
 #define DevAssertMsg( ... )
-#define AssertMsg_Internal( ... )
+#define AssertMsg_Internal( Success, Fmt, ... ) AssertMsg( Success, Fmt, ##__VA_ARGS__ )
 #define InternalMsg( Channel, Fmt, ... ) ConColorMsg( g_LoggingInfo##Channel.color, "[%s]" Fmt, g_LoggingInfo##Channel.pszName, ##__VA_ARGS__ )
 #define Log_Msg( Channel, Fmt, ... ) InternalMsg( Channel, Fmt, ##__VA_ARGS__ )
 #define Log_Warning( Channel, Fmt, ... ) InternalMsg( Channel, Fmt, ##__VA_ARGS__ )
